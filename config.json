@@ -1,0 +1,36 @@
+{
+    "bot": {
+        "owner": "946496520562311168",
+        "token": "OTQ3MjMwNzYyMzMwMDk1NjQ3.YhqPZA.-s82GKk5GBKI6V7alFIPXmhlN_0",
+        "prefix": ".",
+        "BotStatus": "Kwan <3 Wolly",
+        "BotFooter": "Kwan <3 Wolly",
+        "supportserver": "https://discord.gg/KuHWf8extS",
+        "mongoUrl": "mongodb+srv://kaganondin1:kaganondin121@cluster0.alit0.mongodb.net/kaganondin1?retryWrites=true&w=majority",
+        "invitelink": "https://discordapp.com/oauth2/authorize?client_id=947230762330095647&scope=bot&permissions=8",
+        "cooldown": 5
+    },
+
+
+    "guild": {
+        "guildId": "",
+        "guildTag": "",
+        "voicechannel": "962050214406029362"
+    },
+
+
+    "emoji": {
+        "yes": "968960747675721758",
+        "no": "967381188492800200",
+        "load": "958384899038019665",
+        "google": "958384903211335681",
+        "exclamatio": "958384901206450196",
+        "moderation": "958384893727998004",
+        "guard1": "958384894256496650",
+        "star": "958384916666662962",
+        "online": "971468210949980231",
+        "idle": "971468211256176680",
+        "dnd": "971468211130339368",
+        "offline": "971468211545591808"
+    }
+} 

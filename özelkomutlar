@@ -1,0 +1,17 @@
+message.reply(`Sohbet temizleniyor.`).then(x => {
+    x.edit(`Sohbet temizleniyor..`).then(x => { 
+      x.edit(`Sohbet temizleniyor...`).then(x => { 
+          x.edit(`Sohbet temizleniyor....`).then(x => {
+              x.edit(`Sohbet temizleniyor.....`).then(x => {
+                         
+                
+              })
+          })
+      })
+  })
+})
+      setTimeout(() => {
+
+     }, 2500);
+// süreli sistem
+
