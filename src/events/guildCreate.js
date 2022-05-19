@@ -6,13 +6,10 @@ const data = require("quick.db");
 
 module.exports = async (member) => {
 
-
-    data.push(`memberquitname_${member.guild.id + member.id}`, `\`${member.username}\``)
-
-
+return;
 
 }
 
 module.exports.conf = {
-    name: "guildMemberRemove"
+    name: "guildCreate"
 }

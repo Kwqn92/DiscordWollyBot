@@ -21,19 +21,19 @@ var yes = client.emojis.cache.get(config.emoji.yes)
               x.edit(`Sohbet temizleniyor...`).then(x => { 
                   x.edit(`Sohbet temizleniyor....`).then(x => {
                       x.edit(`Sohbet temizleniyor.....`).then(x => {
-                                 
+                        setTimeout(() => {
+                            message.channel.bulkDelete(miktar)
+                            message.channel.send(` Başarıyla \`${miktar}\` adet mesaj başarıyla silindi!`).then(y => {
+                                 y.react(yes), 
+                                setTimeout(() => {y.delete()},config.bot.cooldown * 1000)})
+                       }, 1000);  
                         
                       })
                   })
               })
           })
         })
-        setTimeout(() => {
-            message.channel.bulkDelete(miktar)
-            message.channel.send(` Başarıyla \`${miktar}\` adet mesaj başarıyla silindi!`).then(x => {
-                 x.react(yes), 
-                setTimeout(() => {x.delete()},config.bot.cooldown * 1000)})
-       }, 2500);
+     
                 
 
     }

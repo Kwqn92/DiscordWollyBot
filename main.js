@@ -1,15 +1,9 @@
-const { Client, Collection, Intents } = require("discord.js");
-const client = global.client = new Client({
-  intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MEMBERS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_VOICE_STATES,
-    Intents.FLAGS.GUILD_PRESENCES
-  ]
-});
-
+const { Client, Collection, Intents, MessageEmbed } = require("discord.js");
+const client = global.client = new Client(
+  {intents: 131071}
+);
 const config = require('./config.json')
+const data = require('quick.db')
 const { readdir } = require("fs");
 require("moment-duration-format");
 const commands = client.commands = new Collection();
@@ -42,9 +36,9 @@ readdir("./src/events", (err, files) => {
   });
 });
 
-const nodemon = require('nodemon')
+
 client.login(config.bot.token)
-  .then(() => console.log(`Bot ${client.user.username} olarak giriş yaptı! nodemonla`))
+  .then(() => console.log(`Bot ${client.user.username} olarak giriş yaptı!`))
   .catch((err) => console.log(`Bot Giriş yapamadı sebep: ${err}`));
 
 
@@ -60,3 +54,53 @@ client.login(config.bot.token)
         }
     });
     
+
+
+
+  client.on('messageCreate', async message => {
+    let control = data.fetch(`küfürlog${message.guild.id}`) || data.fetch(`modlog${message.guild.id}`) 
+    if(!control) return;
+
+    const küfürler = ["oç", "amk", "ananı sikiyim", "ananıskm", "piç", "amk", "amsk", "sikim", "sikiyim", "orospu çocuğu", "piç kurusu", "kahpe", "orospu", "mal", "sik", "yarrak", "am", "amcık", "amık", "yarram", "sikimi ye", "mk", "mq", "aq", "ak", "amq",];
+
+    try {
+      if(küfürler.some(kelimeler => message.content.includes(kelimeler))) {
+        if(!message.member.permissions.has("BAN_MEMBERS")) {
+          message.delete()
+          message.channel.send(`${message.author} Küfür etmemelisin!`).then(x => setTimeout(() => { x.delete() }, 5000))
+     
+            data.add(`küfürwarn${message.guild.id + message.author.id}`,1)
+
+        }
+      }
+     } catch (error) {
+      console.log(error);
+     }
+
+  })
+
+  client.on('messageUpdate', async(oldMessage, newMessage) => {
+    let control = data.fetch(`küfürlog${newMessage.guild.id}`) || data.fetch(`modlog${newMessage.guild.id}`) 
+    if(!control) return;
+
+    const küfürler = ["oç", "amk", "ananı sikiyim", "ananıskm", "piç", "amk", "amsk", "sikim", "sikiyim", "orospu çocuğu", "piç kurusu", "kahpe", "orospu", "mal", "sik", "yarrak", "am", "amcık", "amık", "yarram", "sikimi ye", "mk", "mq", "aq", "ak", "amq",];
+
+    try {
+      if(küfürler.some(kelimeler => newMessage.content.includes(kelimeler))) {
+        if(!newMessage.member.permissions.has("BAN_MEMBERS")) {
+          newMessage.delete()
+          newMessage.channel.send(`${newMessage.author} Küfür etmemelisin!`).then(x => setTimeout(() => { x.delete() }, 5000))
+
+   
+            data.add(`küfürwarn${newMessage.guild.id + newMessage.author.id}`,1)
+         
+        }
+      }
+     } catch (error) {
+      console.log(error);
+     }
+
+  })
+
+
+ 

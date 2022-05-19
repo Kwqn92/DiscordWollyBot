@@ -5,7 +5,7 @@ module.exports = {
     name: "otorol",
     aliases: ["otorol-ayarla","otorolayarla"],
     cooldown: 3,
-    permission: "",
+    permission: "ADMINISTRATOR",
     execute: async (client, message, args, embed, author, channel, guild) => {
 
         let time = ayarlar.bot.cooldown

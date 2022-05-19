@@ -7,6 +7,8 @@ module.exports = {
     cooldown: 3,
     permission: "ADMINISTRATOR",
     execute: async (client, message, args, embed, author, channel, guild) => {
+        let time = config.bot.cooldown
+        let prefix = data.fetch(`prefix_${message.guild.id}`) || config.bot.prefix 
 
         let control = data.fetch(`iltifatsistem${message.guild.id}`)
 

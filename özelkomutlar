@@ -4,14 +4,58 @@ message.reply(`Sohbet temizleniyor.`).then(x => {
           x.edit(`Sohbet temizleniyor....`).then(x => {
               x.edit(`Sohbet temizleniyor.....`).then(x => {
                          
+                setTimeout(() => {
+
+                }, 2500);
                 
               })
           })
       })
   })
 })
-      setTimeout(() => {
 
-     }, 2500);
 // süreli sistem
 
+const { MessageEmbed } = require("discord.js")
+const data = require('quick.db')
+const config = require('../../config.json')
+module.exports = {
+    name: "",
+    aliases: [""],
+    cooldown: 3,
+    permission: "",
+    execute: async (client, message, args, embed, author, channel, guild) => {
+
+        let time = config.bot.cooldown
+        let prefix = data.fetch(`prefix_${message.guild.id}`) || config.bot.prefix 
+        
+        let tik = client.emojis.cache.get(config.emoji.yes)
+        let x = client.emojis.cache.get(config.emoji.no)
+        let loading = client.emojis.cache.get(config.emoji.load)
+
+
+    }
+        
+
+    }
+
+//MESAJ HATA
+    message.react(x)
+    message.reply({embeds: [embed.setDescription(``)]}).then(x => setTimeout(() => { x.delete() }, 5000))
+    return;
+
+//KAYIT
+    message.guild.members.cache.get(member.id).setNickname(isim + ' | ' + yaş)
+    member.roles.roles.add(erkek)
+    member.roles.remove(kayıtsız)
+    data.push(`isimler_${member.id}`, `\`${isim} | ${yaş}\``);
+    data.add(`kerkek_${author.id}`, 1)
+    data.add(`ktoplam_${author.id}`, 1)
+
+    const names = data.get(`isimler_${member.id}`)
+
+    if (!names) {
+        message.reply({ embeds: [embed.setDescription(`<@${member.id}> adlı kullanıcı başarıyla kayıt edildi! \`${isim}\` adı ve \`${yaş}\` yaşında ${author.tag} kişi tarafından kayıt edildi!`)] });
+    } else {
+        message.reply({ embeds: [embed.setDescription(`<@${member.id}> adlı kullanıcı başarıyla kayıt edildi! \`${isim}\` adı ve \`${yaş}\` yaşında ${author.tag} kişi tarafından kayıt edildi!\n\n Kullanıcının toplamda " ${names.length} " isim kayıtı görüntülendi.\n${names.map((data) => `${data}`).join("\n")}`)] });
+    }

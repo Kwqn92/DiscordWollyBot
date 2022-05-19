@@ -6,6 +6,7 @@ module.exports = {
     aliases: ["pp"],
     cooldown: 3,
     permission: "",
+    enabled: true,
     execute: async (client, message, args, embed, author, channel, guild) => {
 
         let muser = message.mentions.users.first();

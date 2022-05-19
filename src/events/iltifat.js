@@ -45,12 +45,13 @@ module.exports = async (message) => {
 
     if(!message.guild) return;
     if(message.author.bot) return;
-    if(message.content.startsWith(config.bot.prefix)) return;
+    let prefix = data.fetch(`prefix_${message.guild.id}`) || config.bot.prefix;
+    if(prefix) return;
 
     let iltifat = iltifatlar[Math.floor(Math.random() * iltifatlar.length)];
    
     iltifatSayi++;
-    if (iltifatSayi >= 5) {
+    if (iltifatSayi >= 70) {
         iltifatSayi = 0;
         message.reply(  `<@${message.author.id}> ` +iltifat);
 

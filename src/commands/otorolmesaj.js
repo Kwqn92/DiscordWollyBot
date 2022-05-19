@@ -11,8 +11,8 @@ module.exports = {
         let time = ayarlar.bot.cooldown
         let prefix = data.fetch(`prefix_${message.guild.id}`) || ayarlar.bot.prefix 
 
-        let yes = client.emojis.cache.get(ayarlar.emoji.yes)
-        let no = client.emojis.cache.get(ayarlar.emoji.no)
+        let tik = client.emojis.cache.get(ayarlar.emoji.yes)
+        let x = client.emojis.cache.get(ayarlar.emoji.no)
         let load = client.emojis.cache.get(ayarlar.emoji.load)
         
         
@@ -21,14 +21,14 @@ module.exports = {
         let otorolmesaj = data.fetch(`otorolmesaj${message.guild.id}`)
         
         if(!otorol || !otorolkanal) {
-            message.react(no)
+            message.react(x)
         message.reply({embeds: [embed.setDescription(`Otorol ayarlamadan Giriş mesajını ayarlayamazsın!`)]}).then(x => setTimeout(() => { x.delete() }, 5000))
         return;
         }
         
         let mesaj = args.join(' ')
         if(!mesaj) {
-            message.react(no)
+            message.react(x)
             message.reply({embeds: [embed.setDescription(`Bir otorol giriş mesajı ayarlamalısın! Kullanabileceğin değişkenler\n\`-kullanıcı- & -sunucu- & -rol-\``)]}).then(x => setTimeout(() => { x.delete() }, 5000))
         return;
         }
@@ -36,7 +36,7 @@ module.exports = {
         
         
         await data.set(`otorolmesaj${message.guild.id}`,mesaj)
-        message.react(yes)
+        message.react(tik)
         message.reply({embeds: [embed.setDescription(`Otorol mesajı başarıyla\`${mesaj}\` olarak ayarlandı!`)]}).then(x => setTimeout(() => { x.delete() }, 5000))
         
         
