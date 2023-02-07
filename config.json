@@ -1,20 +1,20 @@
 {
     "bot": {
         "owner": "946496520562311168",
-        "token": "OTQ3MjMwNzYyMzMwMDk1NjQ3.YhqPZA.-s82GKk5GBKI6V7alFIPXmhlN_0",
+        "token": "token",
         "prefix": ".",
         "BotStatus": "Kwan <3 Wolly",
         "BotFooter": "Kwan <3 Wolly",
         "supportserver": "https://discord.gg/KuHWf8extS",
-        "mongoUrl": "mongodb+srv://kaganondin1:kaganondin121@cluster0.alit0.mongodb.net/kaganondin1?retryWrites=true&w=majority",
+        "mongoUrl": "mongo",
         "invitelink": "https://discordapp.com/oauth2/authorize?client_id=947230762330095647&scope=bot&permissions=8",
         "cooldown": 5
     },
 
 
     "guild": {
-        "guildId": "949415599119949874",
-        "voicechannel": "962050214406029362"
+        "guildId": "949415599119949874", //Support server
+        "voicechannel": "962050214406029362" //connect voice channel
     },
 
 
